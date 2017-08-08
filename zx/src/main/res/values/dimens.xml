@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="capture_crop_view_height">200dp</dimen>
+    <dimen name="capture_mask_top_height">120dp</dimen>
+    <dimen name="margin_top">5dp</dimen>
+</resources>

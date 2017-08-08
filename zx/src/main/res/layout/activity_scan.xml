@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_scan_code"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/scan_code"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <SurfaceView
+            android:id="@+id/capture_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:id="@+id/capture_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 填充 扫描框这边使用 start -->
+            <ImageView
+                android:id="@+id/capture_mask_top"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/capture_mask_top_height"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/shadow"
+                android:contentDescription="@null"/>
+
+            <!-- 填充 扫描框这边使用 end -->
+
+            <!-- 扫描框 start -->
+            <RelativeLayout
+                android:id="@+id/capture_crop_view"
+                android:layout_width="@dimen/capture_crop_view_height"
+                android:layout_height="@dimen/capture_crop_view_height"
+                android:layout_below="@id/capture_mask_top"
+                android:layout_centerInParent="true"
+                android:background="@drawable/qr_code_bg">
+
+                <ImageView
+                    android:id="@+id/capture_scan_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/margin_top"
+                    android:layout_marginEnd="@dimen/margin_top"
+                    android:contentDescription="@null"
+                    android:src="@drawable/scan_line"/>
+            </RelativeLayout>
+            <!-- 扫描框 end -->
+
+            <!--扫描说明-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/capture_crop_view"
+                android:layout_marginTop="@dimen/margin_top"
+                android:gravity="center"
+                android:text="@string/scan_code_description"
+                android:textColor="@color/white"/>
+
+            <!-- 填充 扫描框这边使用 start-->
+            <ImageView
+                android:id="@+id/capture_mask_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/capture_crop_view"
+                android:background="@drawable/shadow"
+                android:contentDescription="@null"/>
+
+            <ImageView
+                android:id="@+id/capture_mask_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/capture_mask_bottom"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/capture_mask_top"
+                android:layout_toStartOf="@id/capture_crop_view"
+                android:background="@drawable/shadow"
+                android:contentDescription="@null"/>
+
+            <ImageView
+                android:id="@+id/capture_mask_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/capture_mask_bottom"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/capture_mask_top"
+                android:layout_toEndOf="@id/capture_crop_view"
+                android:background="@drawable/shadow"
+                android:contentDescription="@null"/>
+            <!-- 填充 扫描框这边使用 end-->
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>
