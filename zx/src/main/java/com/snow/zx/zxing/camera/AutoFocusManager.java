@@ -1,14 +1,14 @@
 package com.snow.zx.zxing.camera;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.concurrent.RejectedExecutionException;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.hardware.Camera;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.concurrent.RejectedExecutionException;
 
 public class AutoFocusManager implements Camera.AutoFocusCallback {
 
@@ -18,7 +18,7 @@ public class AutoFocusManager implements Camera.AutoFocusCallback {
 	private static final Collection<String> FOCUS_MODES_CALLING_AF;
 
 	static {
-		FOCUS_MODES_CALLING_AF = new ArrayList<String>(2);
+		FOCUS_MODES_CALLING_AF = new ArrayList<>(2);
 		FOCUS_MODES_CALLING_AF.add(Camera.Parameters.FOCUS_MODE_AUTO);
 		FOCUS_MODES_CALLING_AF.add(Camera.Parameters.FOCUS_MODE_MACRO);
 	}
@@ -49,12 +49,10 @@ public class AutoFocusManager implements Camera.AutoFocusCallback {
 			AutoFocusTask newTask = new AutoFocusTask();
 			try {
 				// Unnecessary, our app's min sdk is higher than 11.
-				// if (Build.VERSION.SDK_INT >= 11) {
-				// 	newTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-				// } else {
-				//
-				// }
-				newTask.execute();
+//				 if (Build.VERSION.SDK_INT >= 11) {
+				 	newTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+//				 }
+//				newTask.execute();
 				outstandingTask = newTask;
 			} catch (RejectedExecutionException ree) {
 				Log.w(TAG, "Could not request auto focus", ree);
